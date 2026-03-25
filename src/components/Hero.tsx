@@ -1,17 +1,17 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function Hero() {
   return (
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image & Overlay */}
+      {/* Background Video & Overlay */}
       <div className="absolute inset-0 z-0">
-        <Image 
-          src="/images/hero_event_live.jpg"
-          alt="Nexus Nightclub Interior"
-          fill
-          className="object-cover object-center"
-          priority
+        <video 
+          src="/videos/hero-background.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="object-cover object-center w-full h-full"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-background z-10" />
       </div>
