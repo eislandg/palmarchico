@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import EventsGrid from "@/components/EventsGrid";
 import UpcomingEventsList from "@/components/UpcomingEventsList";
-import VenueOverview from "@/components/VenueOverview";
+// import VenueOverview from "@/components/VenueOverview";
 import VIPService from "@/components/VIPService";
 import GuestlistForm from "@/components/GuestlistForm";
 import Footer from "@/components/Footer";
@@ -14,7 +14,7 @@ export default function Home() {
       <Hero />
       <EventsGrid />
       <UpcomingEventsList />
-      <VenueOverview />
+      {/* <VenueOverview /> */}
       <VIPService />
       <GuestlistForm />
       <Footer />

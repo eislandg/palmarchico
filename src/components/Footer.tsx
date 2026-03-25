@@ -40,7 +40,7 @@ export default function Footer() {
             <ul className="space-y-4">
               <li><Link href="#events" className="text-zinc-400 font-light hover:text-accent-red transition-colors">Upcoming Events</Link></li>
               <li><Link href="#vip" className="text-zinc-400 font-light hover:text-accent-red transition-colors">VIP Table Service</Link></li>
-              <li><Link href="#venue" className="text-zinc-400 font-light hover:text-accent-red transition-colors">Venue & Gallery</Link></li>
+              {/* <li><Link href="#venue" className="text-zinc-400 font-light hover:text-accent-red transition-colors">Venue & Gallery</Link></li> */}
               <li><Link href="#guestlist" className="text-zinc-400 font-light hover:text-accent-red transition-colors">Join Guestlist</Link></li>
               <li><Link href="#" className="text-zinc-400 font-light hover:text-accent-red transition-colors">Private Events</Link></li>
               <li><Link href="#" className="text-zinc-400 font-light hover:text-accent-red transition-colors">Photo Gallery</Link></li>
@@ -68,7 +68,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-zinc-500 text-sm font-light">
-            &copy; {new Date().getFullYear()} NEXUS Nightclub. All rights reserved.
+            &copy; {new Date().getFullYear()} Powered By Eventmania.com. All rights reserved.
           </p>
           <div className="flex flex-wrap justify-center gap-6 text-sm">
             <a href="#" className="text-zinc-500 hover:text-white transition-colors">21+ To Enter</a>
