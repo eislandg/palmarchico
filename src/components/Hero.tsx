@@ -32,11 +32,11 @@ export default function Hero() {
         
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
           <Link href="#events" className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-wide hover:bg-zinc-200 transition-colors text-center w-full sm:w-auto">
-            View This Weekend
+            Este Fin de Semana
           </Link>
-          <Link href="#vip" className="border border-white/30 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wide hover:bg-white/10 transition-colors text-center backdrop-blur-sm w-full sm:w-auto">
+          {/* <Link href="#vip" className="border border-white/30 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wide hover:bg-white/10 transition-colors text-center backdrop-blur-sm w-full sm:w-auto">
             Reserve VIP Table
-          </Link>
+          </Link> */}
         </div>
       </div>
 

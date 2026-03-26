@@ -15,7 +15,7 @@ export default function Home() {
       <EventsGrid />
       <UpcomingEventsList />
       {/* <VenueOverview /> */}
-      <VIPService />
+      {/* <VIPService /> */}
       <GuestlistForm />
       <Footer />
     </main>

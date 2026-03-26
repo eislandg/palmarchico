@@ -60,7 +60,7 @@ export default async function EventsGrid() {
       <div className="container mx-auto">
         <div className="flex flex-col sm:flex-row justify-between items-center mb-12 sm:mb-16 gap-6 sm:gap-0">
           <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight text-center sm:text-left">
-            This <span className="text-accent-red">Weekend</span>
+            Este Fin de <span className="text-accent-red">Semana</span>
           </h2>
           <div className="relative w-40 h-14 md:w-48 md:h-16 shrink-0">
             <Image src="/images/logo.png" alt="Promociones Palmar Chico Logo" fill className="object-contain object-center sm:object-right" />
@@ -117,7 +117,7 @@ export default async function EventsGrid() {
 
         <div className="mt-16 text-center">
           <Link href="#events-list" className="border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wide hover:bg-white/10 transition-colors inline-block w-full sm:w-auto">
-            View Full Calendar
+            Ver Calendario Completo
           </Link>
         </div>
       </div>

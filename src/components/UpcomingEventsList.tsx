@@ -13,6 +13,7 @@ type VenueInfo = {
   city?: string;
   state?: string;
   name?: string;
+  venue?: string;
 };
 
 type EventItem = {
@@ -31,6 +32,8 @@ type EventItem = {
 export default function UpcomingEventsList() {
   const [events, setEvents] = useState<EventItem[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedVenue, setSelectedVenue] = useState("All Venues");
+  const [selectedCity, setSelectedCity] = useState("Ciudad");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -62,24 +65,51 @@ export default function UpcomingEventsList() {
     fetchEvents();
   }, []);
 
+  const uniqueCities = useMemo(() => {
+    const cities = new Set<string>();
+    events.forEach(event => {
+      const city = event.venue_info?.city || event.venueInfo?.city;
+      if (typeof city === "string" && city.trim()) {
+        cities.add(city.trim());
+      }
+    });
+    return Array.from(cities).sort();
+  }, [events]);
+
   const filteredEvents = useMemo(() => {
+    let filtered = events;
+
+    if (selectedVenue !== "All Venues") {
+      filtered = filtered.filter((event) => {
+        const venueName = event.venue_info?.venue || event.venue_info?.name || event.venueInfo?.venue || event.venueInfo?.name || "";
+        return venueName.toLowerCase().includes(selectedVenue.toLowerCase());
+      });
+    }
+
+    if (selectedCity !== "Ciudad") {
+      filtered = filtered.filter((event) => {
+        const city = event.venue_info?.city || event.venueInfo?.city || "";
+        return city.toLowerCase() === selectedCity.toLowerCase();
+      });
+    }
+
     const term = searchTerm.toLowerCase().trim();
+    if (!term) return filtered;
 
-    if (!term) return events;
-
-    return events.filter((event) => {
+    return filtered.filter((event) => {
       const venue = event.venue_info || event.venueInfo || {};
       const artistNames = event.artists?.map((artist) => artist.name).join(" ") || "";
+      const venueNameStr = venue.venue || venue.name || "";
 
       return (
         event.title?.toLowerCase().includes(term) ||
-        venue.name?.toLowerCase().includes(term) ||
+        venueNameStr.toLowerCase().includes(term) ||
         venue.city?.toLowerCase().includes(term) ||
         venue.state?.toLowerCase().includes(term) ||
         artistNames.toLowerCase().includes(term)
       );
     });
-  }, [events, searchTerm]);
+  }, [events, searchTerm, selectedVenue, selectedCity]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(`${dateString}T00:00:00`);
@@ -92,7 +122,7 @@ export default function UpcomingEventsList() {
   };
 
   return (
-    <section className="py-24 bg-charcoal px-6 md:px-12 border-t border-white/5">
+    <section id="events-list" className="py-24 bg-charcoal px-6 md:px-12 border-t border-white/5">
       <div className="container mx-auto">
         {/* Search & Filters */}
         <div className="flex flex-col md:flex-row gap-4 mb-12">
@@ -108,15 +138,40 @@ export default function UpcomingEventsList() {
           </div>
 
           <div className="flex gap-4 overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
-            <button className="flex items-center gap-2 whitespace-nowrap bg-background border border-white/10 rounded-full px-6 py-4 text-zinc-300 hover:border-accent-red transition-colors">
-              All Types <ChevronDown className="w-4 h-4" />
-            </button>
+            <div className="relative shrink-0">
+              <select
+                value={selectedCity}
+                onChange={(e) => setSelectedCity(e.target.value)}
+                className="appearance-none flex items-center whitespace-nowrap bg-background border border-white/10 rounded-full pl-6 pr-12 py-4 text-zinc-300 hover:border-accent-red transition-colors focus:outline-none cursor-pointer h-full"
+              >
+                <option value="Ciudad">Ciudad</option>
+                {uniqueCities.map((city) => (
+                  <option key={city} value={city}>
+                    {city}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="w-4 h-4 absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-300" />
+            </div>
             <button className="flex items-center gap-2 whitespace-nowrap bg-background border border-white/10 rounded-full px-6 py-4 text-zinc-300 hover:border-accent-red transition-colors">
               All Series <ChevronDown className="w-4 h-4" />
             </button>
-            <button className="flex items-center gap-2 whitespace-nowrap bg-background border border-white/10 rounded-full px-6 py-4 text-zinc-300 hover:border-accent-red transition-colors">
-              All Venues <ChevronDown className="w-4 h-4" />
-            </button>
+            <div className="relative shrink-0">
+              <select
+                value={selectedVenue}
+                onChange={(e) => setSelectedVenue(e.target.value)}
+                className="appearance-none flex items-center whitespace-nowrap bg-background border border-white/10 rounded-full pl-6 pr-12 py-4 text-zinc-300 hover:border-accent-red transition-colors focus:outline-none cursor-pointer h-full"
+              >
+                <option value="All Venues">All Venues</option>
+                <option value="Azteca De Oro">Azteca De Oro</option>
+                <option value="Estrellas">Estrellas</option>
+                <option value="Candla">Candla</option>
+                <option value="Los Globos">Los Globos</option>
+                <option value="La Hacienda">La Hacienda</option>
+                <option value="La Sierra">La Sierra</option>
+              </select>
+              <ChevronDown className="w-4 h-4 absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-300" />
+            </div>
           </div>
         </div>
 
@@ -175,7 +230,7 @@ export default function UpcomingEventsList() {
                       <div className="flex items-center gap-4 mt-2 flex-wrap">
                         <div className="flex items-center gap-1 text-zinc-400 text-sm">
                           <MapPin className="w-4 h-4" />
-                          {venue.name || [venue.city, venue.state].filter(Boolean).join(", ") || "Venue TBA"}
+                          {venue.venue || venue.name || [venue.city, venue.state].filter(Boolean).join(", ") || "Venue TBA"}
                         </div>
 
                         <div className="flex gap-2 flex-wrap">
