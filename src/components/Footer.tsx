@@ -14,10 +14,10 @@ export default function Footer() {
           
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center mb-6 group inline-flex relative w-48 h-16">
-              <Image src="/images/logo.png" alt="Promociones Palmar Chico Logo" fill className="object-contain object-left" />
+              <Image src="https://eventmania.com/img/logo-white.svg" alt="Eventmania Logo" fill className="object-contain object-left" unoptimized />
             </Link>
             <p className="text-zinc-400 font-light max-w-sm mb-8 leading-relaxed">
-              The premier destination for immersive nightlife, featuring world-class talent, state-of-the-art production, and unparalleled VIP experiences.
+             Powered by Eventmania.com.
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-accent-green hover:text-white transition-all transform hover:scale-110">
@@ -26,7 +26,7 @@ export default function Footer() {
               <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-accent-red hover:text-white transition-all transform hover:scale-110">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-white hover:text-white transition-all transform hover:scale-110">
+              <a href="https://www.facebook.com/promociones.chico/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-white hover:text-white transition-all transform hover:scale-110">
                 <Facebook className="w-5 h-5" />
               </a>
               <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-red-500 hover:text-white transition-all transform hover:scale-110">

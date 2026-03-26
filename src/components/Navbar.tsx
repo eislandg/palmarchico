@@ -40,7 +40,7 @@ export default function Navbar() {
 
         <div className="hidden md:block">
           <Link href="#events" className="bg-gradient-to-r from-accent-green to-accent-red text-white px-6 py-3 rounded-full font-bold text-sm tracking-wide hover:shadow-[0_0_20px_rgba(255,51,102,0.4)] transition-all duration-300 transform hover:-translate-y-1 inline-block">
-            Buy Tickets
+            Boletos
           </Link>
         </div>
 
