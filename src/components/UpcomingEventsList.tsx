@@ -32,8 +32,9 @@ type EventItem = {
 export default function UpcomingEventsList() {
   const [events, setEvents] = useState<EventItem[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedVenue, setSelectedVenue] = useState("All Venues");
+  const [selectedVenue, setSelectedVenue] = useState("Recinto");
   const [selectedCity, setSelectedCity] = useState("Ciudad");
+  const [selectedArtist, setSelectedArtist] = useState("Artista");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -76,10 +77,33 @@ export default function UpcomingEventsList() {
     return Array.from(cities).sort();
   }, [events]);
 
+  const uniqueArtists = useMemo(() => {
+    const artistSet = new Set<string>();
+    events.forEach(event => {
+      event.artists?.forEach(artist => {
+        if (artist.name && artist.name.trim()) {
+          artistSet.add(artist.name.trim());
+        }
+      });
+    });
+    return Array.from(artistSet).sort();
+  }, [events]);
+
+  const uniqueVenues = useMemo(() => {
+    const venueSet = new Set<string>();
+    events.forEach(event => {
+      const venueName = event.venue_info?.venue || event.venue_info?.name || event.venueInfo?.venue || event.venueInfo?.name;
+      if (typeof venueName === "string" && venueName.trim()) {
+        venueSet.add(venueName.trim());
+      }
+    });
+    return Array.from(venueSet).sort();
+  }, [events]);
+
   const filteredEvents = useMemo(() => {
     let filtered = events;
 
-    if (selectedVenue !== "All Venues") {
+    if (selectedVenue !== "Recinto") {
       filtered = filtered.filter((event) => {
         const venueName = event.venue_info?.venue || event.venue_info?.name || event.venueInfo?.venue || event.venueInfo?.name || "";
         return venueName.toLowerCase().includes(selectedVenue.toLowerCase());
@@ -90,6 +114,15 @@ export default function UpcomingEventsList() {
       filtered = filtered.filter((event) => {
         const city = event.venue_info?.city || event.venueInfo?.city || "";
         return city.toLowerCase() === selectedCity.toLowerCase();
+      });
+    }
+
+    if (selectedArtist !== "Artista") {
+      filtered = filtered.filter((event) => {
+        const hasArtist = event.artists?.some(
+          (artist) => artist.name?.toLowerCase() === selectedArtist.toLowerCase()
+        );
+        return hasArtist;
       });
     }
 
@@ -109,7 +142,7 @@ export default function UpcomingEventsList() {
         artistNames.toLowerCase().includes(term)
       );
     });
-  }, [events, searchTerm, selectedVenue, selectedCity]);
+  }, [events, searchTerm, selectedVenue, selectedCity, selectedArtist]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(`${dateString}T00:00:00`);
@@ -153,22 +186,33 @@ export default function UpcomingEventsList() {
               </select>
               <ChevronDown className="w-4 h-4 absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-300" />
             </div>
-            <button className="flex items-center gap-2 whitespace-nowrap bg-background border border-white/10 rounded-full px-6 py-4 text-zinc-300 hover:border-accent-red transition-colors">
-              All Series <ChevronDown className="w-4 h-4" />
-            </button>
+            <div className="relative shrink-0">
+              <select
+                value={selectedArtist}
+                onChange={(e) => setSelectedArtist(e.target.value)}
+                className="appearance-none flex items-center whitespace-nowrap bg-background border border-white/10 rounded-full pl-6 pr-12 py-4 text-zinc-300 hover:border-accent-red transition-colors focus:outline-none cursor-pointer h-full"
+              >
+                <option value="Artista">Artista</option>
+                {uniqueArtists.map((artist) => (
+                  <option key={artist} value={artist}>
+                    {artist}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="w-4 h-4 absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-300" />
+            </div>
             <div className="relative shrink-0">
               <select
                 value={selectedVenue}
                 onChange={(e) => setSelectedVenue(e.target.value)}
                 className="appearance-none flex items-center whitespace-nowrap bg-background border border-white/10 rounded-full pl-6 pr-12 py-4 text-zinc-300 hover:border-accent-red transition-colors focus:outline-none cursor-pointer h-full"
               >
-                <option value="All Venues">All Venues</option>
-                <option value="Azteca De Oro">Azteca De Oro</option>
-                <option value="Estrellas">Estrellas</option>
-                <option value="Candla">Candla</option>
-                <option value="Los Globos">Los Globos</option>
-                <option value="La Hacienda">La Hacienda</option>
-                <option value="La Sierra">La Sierra</option>
+                <option value="Recinto">Recinto</option>
+                {uniqueVenues.map((venue) => (
+                  <option key={venue} value={venue}>
+                    {venue}
+                  </option>
+                ))}
               </select>
               <ChevronDown className="w-4 h-4 absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-300" />
             </div>
