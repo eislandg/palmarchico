@@ -8,8 +8,20 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Palmar Chico Official Website | NEXUS",
+  title: "Palmar Chico Official Website",
   description: "The Premier Nightlife Destination",
+  openGraph: {
+    title: "Palmar Chico Official Website",
+    description: "The Premier Nightlife Destination",
+    images: [
+      {
+        url: "https://eventmania-s3.b-cdn.net/event/banner/banner/WNElJecWhpIItQ5RLIDXlJcsJ1hq0WVSFFlnHFZK.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    type: "website",
+  },
 };
 
 export default function RootLayout({
