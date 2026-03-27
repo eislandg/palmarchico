@@ -77,7 +77,7 @@ export default async function EventsGrid() {
 
               return (
                 <div key={event.uuid} className="group relative bg-charcoal rounded-2xl overflow-hidden border border-white/5 hover:border-accent-green/30 transition-all duration-500">
-                  <Link href={eventUrl} target="_blank" className="relative aspect-square w-full overflow-hidden flex items-center justify-center block">
+                  <Link href={eventUrl} className="relative aspect-square w-full overflow-hidden flex items-center justify-center block">
                     <Image
                       src={event.poster_url || "/images/hero_club.png"}
                       alt={event.title}
@@ -97,7 +97,7 @@ export default async function EventsGrid() {
                     <div className="text-accent-green font-mono text-sm tracking-widest mb-2">
                       {formatDate(event.start_date)}
                     </div>
-                    <Link href={eventUrl} target="_blank" className="hover:text-accent-red transition-colors block">
+                    <Link href={eventUrl} className="hover:text-accent-red transition-colors block">
                       <h3 className="text-2xl font-bold uppercase tracking-tight mb-6 line-clamp-2" title={event.title}>
                         {event.title}
                       </h3>
@@ -105,7 +105,7 @@ export default async function EventsGrid() {
 
                     <div className="flex justify-between items-center border-t border-white/10 pt-4 mt-auto">
                       <span className="text-zinc-400 font-medium text-sm">Tickets Available</span>
-                      <Link href={eventUrl} target="_blank" className="text-accent-red font-bold uppercase tracking-wide hover:text-white transition-colors text-sm group/btn flex items-center gap-2">
+                      <Link href={eventUrl} className="text-accent-red font-bold uppercase tracking-wide hover:text-white transition-colors text-sm group/btn flex items-center gap-2">
                         Buy Tickets
                         <span className="transform group-hover/btn:translate-x-1 transition-transform">→</span>
                       </Link>

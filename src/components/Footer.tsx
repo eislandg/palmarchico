@@ -20,48 +20,48 @@ export default function Footer() {
              Powered by Eventmania.com.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-accent-green hover:text-white transition-all transform hover:scale-110">
+              {/* <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-accent-green hover:text-white transition-all transform hover:scale-110">
                 <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-accent-red hover:text-white transition-all transform hover:scale-110">
+              </a> */}
+              {/* <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-accent-red hover:text-white transition-all transform hover:scale-110">
                 <Twitter className="w-5 h-5" />
-              </a>
-              <a href="https://www.facebook.com/promociones.chico/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-white hover:text-white transition-all transform hover:scale-110">
+              </a> */}
+              <a href="https://www.facebook.com/promociones.chico/" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-white hover:text-white transition-all transform hover:scale-110">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-red-500 hover:text-white transition-all transform hover:scale-110">
+              {/* <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-red-500 hover:text-white transition-all transform hover:scale-110">
                 <Youtube className="w-5 h-5" />
-              </a>
+              </a> */}
             </div>
           </div>
 
           <div>
             <h4 className="text-white font-bold uppercase tracking-widest mb-6 text-sm">Explore</h4>
             <ul className="space-y-4">
-              <li><Link href="#events" className="text-zinc-400 font-light hover:text-accent-red transition-colors">Upcoming Events</Link></li>
-              <li><Link href="#vip" className="text-zinc-400 font-light hover:text-accent-red transition-colors">VIP Table Service</Link></li>
+              <li><Link href="#events-list" className="text-zinc-400 font-light hover:text-accent-red transition-colors">Eventos</Link></li>
+              <li><Link href="#events" className="text-zinc-400 font-light hover:text-accent-red transition-colors">Este Fin de Semana</Link></li>
               {/* <li><Link href="#venue" className="text-zinc-400 font-light hover:text-accent-red transition-colors">Venue & Gallery</Link></li> */}
-              <li><Link href="#guestlist" className="text-zinc-400 font-light hover:text-accent-red transition-colors">Join Guestlist</Link></li>
-              <li><Link href="#" className="text-zinc-400 font-light hover:text-accent-red transition-colors">Private Events</Link></li>
-              <li><Link href="#" className="text-zinc-400 font-light hover:text-accent-red transition-colors">Photo Gallery</Link></li>
-              <li><Link href="#" className="text-zinc-400 font-light hover:text-accent-red transition-colors">Careers</Link></li>
+              <li><Link href="#guestlist" className="text-zinc-400 font-light hover:text-accent-red transition-colors">Lista de Invitados</Link></li>
+              {/* <li><Link href="#" className="text-zinc-400 font-light hover:text-accent-red transition-colors">Private Events</Link></li> */}
+              {/* <li><Link href="#" className="text-zinc-400 font-light hover:text-accent-red transition-colors">Photo Gallery</Link></li> */}
+              {/* <li><Link href="#" className="text-zinc-400 font-light hover:text-accent-red transition-colors">Careers</Link></li> */}
             </ul>
           </div>
 
           <div>
             <h4 className="text-white font-bold uppercase tracking-widest mb-6 text-sm">Contact Us</h4>
             <ul className="space-y-4 text-zinc-400 font-light mb-6">
-              <li>123 Nightlife Blvd</li>
-              <li>Metropolis, NY 10001</li>
-              <li className="pt-2"><a href="tel:5551234567" className="hover:text-white transition-colors">(555) 123-4567</a></li>
-              <li><a href="mailto:info@palmarchico.com" className="hover:text-white transition-colors">info@palmarchico.com</a></li>
+              {/* <li>123 Nightlife Blvd</li> */}
+              {/* <li>Metropolis, NY 10001</li> */}
+              {/* <li className="pt-2"><a href="tel:5551234567" className="hover:text-white transition-colors">(555) 123-4567</a></li> */}
+              <li><span className="text-white mr-1 uppercase text-xs font-bold tracking-wider">Email:</span><br/><a href="mailto:info@palmarchico.com" className="hover:text-white transition-colors">info@palmarchico.com</a></li>
             </ul>
-            <h4 className="text-white font-bold uppercase tracking-widest mb-4 text-sm mt-8">Hours</h4>
+            {/* <h4 className="text-white font-bold uppercase tracking-widest mb-4 text-sm mt-8">Hours</h4>
             <ul className="space-y-2 text-zinc-400 font-light">
               <li className="flex justify-between"><span>Friday:</span> <span>10PM - 4AM</span></li>
               <li className="flex justify-between"><span>Saturday:</span> <span>10PM - 4AM</span></li>
               <li className="flex justify-between"><span>Sunday:</span> <span>10PM - 3AM</span></li>
-            </ul>
+            </ul> */}
           </div>
 
         </div>

@@ -247,7 +247,6 @@ export default function UpcomingEventsList() {
                 <Link
                   key={event.uuid}
                   href={eventUrl}
-                  target="_blank"
                   className="group flex flex-col md:flex-row justify-between items-start md:items-center py-6 md:py-8 border-b border-white/10 hover:bg-white/5 transition-colors px-4 -mx-4 rounded-xl"
                 >
                   <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 mb-4 md:mb-0">
@@ -292,7 +291,7 @@ export default function UpcomingEventsList() {
                   </div>
 
                   <div className="border border-white/20 text-white px-6 py-3 rounded-full font-bold uppercase tracking-wide group-hover:bg-accent-green group-hover:border-accent-green group-hover:text-white transition-all w-full md:w-auto text-sm text-center">
-                    Get Tickets
+                    Boletos
                   </div>
                 </Link>
               );

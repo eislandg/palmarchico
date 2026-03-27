@@ -53,12 +53,12 @@ export default function Navbar() {
       {/* Mobile Nav */}
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-charcoal border-b border-white/10 p-6 flex flex-col gap-4 shadow-xl">
-          <Link href="#events-list" className="text-lg font-semibold hover:text-accent-red" onClick={() => setMobileMenuOpen(false)}>Events</Link>
+          <Link href="#events-list" className="text-lg font-semibold hover:text-accent-red" onClick={() => setMobileMenuOpen(false)}>Eventos</Link>
           {/* <Link href="#venue" className="text-lg font-semibold hover:text-accent-red" onClick={() => setMobileMenuOpen(false)}>Venue</Link> */}
-          <Link href="#events" className="text-lg font-semibold hover:text-accent-red" onClick={() => setMobileMenuOpen(false)}>This Weekend</Link>
-          <Link href="#guestlist" className="text-lg font-semibold hover:text-accent-red" onClick={() => setMobileMenuOpen(false)}>Guestlist</Link>
+          <Link href="#events" className="text-lg font-semibold hover:text-accent-red" onClick={() => setMobileMenuOpen(false)}>Este Fin de Semana</Link>
+          <Link href="#guestlist" className="text-lg font-semibold hover:text-accent-red" onClick={() => setMobileMenuOpen(false)}>Lista de Invitados</Link>
           <Link href="#events" className="bg-gradient-to-r from-accent-green to-accent-red text-center text-white px-6 py-3 rounded-full font-bold mt-4" onClick={() => setMobileMenuOpen(false)}>
-            Buy Tickets
+            Boletos
           </Link>
         </div>
       )}
