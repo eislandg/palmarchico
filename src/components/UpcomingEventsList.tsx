@@ -42,7 +42,7 @@ export default function UpcomingEventsList() {
     const fetchEvents = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/api/events?user_id=${process.env.NEXT_PUBLIC_PALMAR_CHICO_USER_ID}&filter[publish_status]=published&include=venueInfo,artists&sort=start_date`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/events?user_id=${process.env.NEXT_PUBLIC_PALMAR_CHICO_USER_ID}&filter[publish_status]=published&include=venueInfo,artists&sort=start_date&limit=100`,
           { cache: "no-store" }
         );
 
